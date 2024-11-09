@@ -359,7 +359,13 @@ namespace Exiled.API.Features.Pickups
         /// </summary>
         /// <param name="serial">The serial to look for.</param>
         /// <returns>The <see cref="Pickup"/> given the specified serial.</returns>
-        public static Pickup Get(ushort serial) => List.SingleOrDefault(x => x.Serial == serial);
+        public static Pickup Get(ushort serial)
+        {
+            if (serial == 0)
+                return null;
+
+            return List.SingleOrDefault(x => x.Serial == serial);
+        }
 
         /// <summary>
         /// Gets the <see cref="Pickup"/> given a <see cref="UnityEngine.GameObject"/>.
@@ -373,7 +379,7 @@ namespace Exiled.API.Features.Pickups
         /// </summary>
         /// <param name="pickups">An <see cref="IEnumerable{T}"/> of <see cref="ItemPickupBase"/> to convert into an <see cref="IEnumerable{T}"/> of <see cref="Pickup"/>.</param>
         /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="Pickup"/> containing all existing <see cref="ItemPickupBase"/> instances.</returns>
-        public static IEnumerable<Pickup> Get(IEnumerable<ItemPickupBase> pickups) => pickups.Select(ipb => Get(ipb));
+        public static IEnumerable<Pickup> Get(IEnumerable<ItemPickupBase> pickups) => pickups.Select(Get);
 
         /// <summary>
         /// Gets an <see cref="IEnumerable{T}"/> of <see cref="Pickup"/> containing all existing <see cref="ItemPickupBase"/> instances given an <see cref="ItemType"/>.

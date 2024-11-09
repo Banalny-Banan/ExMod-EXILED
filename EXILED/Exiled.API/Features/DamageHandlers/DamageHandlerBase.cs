@@ -147,7 +147,7 @@ namespace Exiled.API.Features.DamageHandlers
                 return DamageType.Unknown;
             }
 
-            protected set
+            set
             {
                 if (!Enum.IsDefined(typeof(DamageType), value))
                     throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(DamageType));

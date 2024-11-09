@@ -83,7 +83,7 @@ namespace Exiled.API.Features
         /// Gets all <see cref="MapGeneration.Distributors.Locker"/> objects in the current map.
         /// </summary>
         /// <remarks>
-        /// This property is obsolete. Use <see cref="Lockers.Locker.List"/> instead to retrieve a collection of all <see cref="Locker"/> instances.
+        /// This property is obsolete. Use <see cref="Lockers.Locker.List"/> instead to retrieve a collection of all <see cref="Lockers.Locker"/> instances.
         /// </remarks>
         [Obsolete("Use Locker.List instead.")]
         public static ReadOnlyCollection<MapGeneration.Distributors.Locker> Lockers { get; } = Features.Lockers.Locker.BaseToExiledLockers.Keys.ToList().AsReadOnly();
@@ -233,7 +233,7 @@ namespace Exiled.API.Features
         /// Gets a random <see cref="MapGeneration.Distributors.Locker"/> object from the current map.
         /// </summary>
         /// <remarks>
-        /// This method is obsolete. Use <see cref="Features.Lockers.Locker.Random"/> instead to get a random <see cref="Locker"/> instance.
+        /// This method is obsolete. Use <see cref="Features.Lockers.Locker.Random"/> instead to get a random <see cref="Lockers.Locker"/> instance.
         /// </remarks>
         /// <returns>A randomly selected <see cref="MapGeneration.Distributors.Locker"/> object.</returns>
         [Obsolete("Use Locker.Random() instead.")]
@@ -372,6 +372,19 @@ namespace Exiled.API.Features
         }
 
         /// <summary>
+        /// Spawns mice inside the <see cref="RoomType.EzShelter"/>.
+        /// </summary>
+        /// <param name="mice">The type of mice you want to spawn..</param>
+        public static void SpawnMice(byte mice = 1)
+        {
+            if (mice > SqueakSpawner.mice.Length)
+                throw new ArgumentOutOfRangeException($"Mouse type must be between 1 and {SqueakSpawner.mice.Length}.");
+
+            SqueakSpawner.NetworksyncSpawn = mice;
+            SqueakSpawner.SyncMouseSpawn(0, SqueakSpawner.NetworksyncSpawn);
+        }
+
+        /// <summary>
         /// Plays a gun sound at the specified position.
         /// </summary>
         /// <param name="position">Position to play the sound at.</param>
@@ -389,19 +402,6 @@ namespace Exiled.API.Features
                 ShooterPosition = new RelativePosition(position),
             };
             msg.SendToAuthenticated();
-        }
-
-        /// <summary>
-        /// Spawns mice inside the <see cref="RoomType.EzShelter"/>.
-        /// </summary>
-        /// <param name="mice">The type of mice you want to spawn..</param>
-        public static void SpawnMice(byte mice = 1)
-        {
-            if (mice > SqueakSpawner.mice.Length)
-                throw new ArgumentOutOfRangeException($"Mouse type must be between 1 and {SqueakSpawner.mice.Length}.");
-
-            SqueakSpawner.NetworksyncSpawn = mice;
-            SqueakSpawner.SyncMouseSpawn(0, SqueakSpawner.NetworksyncSpawn);
         }
 
         /// <summary>

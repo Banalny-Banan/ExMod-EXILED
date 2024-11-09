@@ -5,6 +5,9 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using Core.API.Features.CustomRoles;
+using JetBrains.Annotations;
+
 namespace Exiled.API.Features
 {
     using System;
@@ -591,6 +594,12 @@ namespace Exiled.API.Features
             get => role ??= Role.Create(RoleManager.CurrentRole);
             internal set => role = value;
         }
+
+        /// <summary>
+        /// Player's custom role object. Can be null
+        /// </summary>
+        [CanBeNull]
+        public CustomRole CustomRole { get; set; }
 
         /// <summary>
         /// Gets or sets the player's SCP preferences.
