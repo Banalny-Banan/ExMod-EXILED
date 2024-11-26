@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------
-// <copyright file="Scp3114FriendlyFireFix.cs" company="Exiled Team">
-// Copyright (c) Exiled Team. All rights reserved.
+// <copyright file="Scp3114FriendlyFireFix.cs" company="ExMod Team">
+// Copyright (c) ExMod Team. All rights reserved.
 // Licensed under the CC BY-SA 3.0 license.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -95,6 +95,7 @@ namespace Exiled.Events.Patches.Fixes
         public override float Damage { get; set; }
 
         public override string ServerLogsText { get; }
+
 #pragma warning restore SA1600 // Elements should be documented
 
         private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator)

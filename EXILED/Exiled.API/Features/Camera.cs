@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------
-// <copyright file="Camera.cs" company="Exiled Team">
-// Copyright (c) Exiled Team. All rights reserved.
+// <copyright file="Camera.cs" company="ExMod Team">
+// Copyright (c) ExMod Team. All rights reserved.
 // Licensed under the CC BY-SA 3.0 license.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -137,7 +137,7 @@ namespace Exiled.API.Features
             Base = camera079;
             Camera079ToCamera.Add(camera079, this);
             Type = GetCameraType();
-#if Debug
+#if DEBUG
             if (Type is CameraType.Unknown)
                 Log.Error($"[CAMERATYPE UNKNOWN] {this}");
 #endif
@@ -214,7 +214,7 @@ namespace Exiled.API.Features
         public float Zoom => Base.ZoomAxis.CurrentZoom;
 
         /// <summary>
-        /// Gets or sets a value indicating whether or not this camera is being used by SCP-079.
+        /// Gets or sets a value indicating whether this camera is being used by SCP-079.
         /// </summary>
         public bool IsBeingUsed
         {

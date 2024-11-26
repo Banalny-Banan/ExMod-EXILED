@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------
-// <copyright file="DoorType.cs" company="Exiled Team">
-// Copyright (c) Exiled Team. All rights reserved.
+// <copyright file="DoorType.cs" company="ExMod Team">
+// Copyright (c) ExMod Team. All rights reserved.
 // Licensed under the CC BY-SA 3.0 license.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -8,8 +8,7 @@
 namespace Exiled.API.Enums
 {
     using Exiled.API.Features.Doors;
-
-    using static Interactables.Interobjects.ElevatorManager;
+    using Interactables.Interobjects;
 
     /// <summary>
     /// Unique identifier for the different types of doors.
@@ -269,7 +268,7 @@ namespace Exiled.API.Enums
         ElevatorGateB,
 
         /// <summary>
-        /// Represents the Elevator door for <see cref="ElevatorGroup.Nuke"/>.
+        /// Represents the Elevator door for <see cref="ElevatorGroup.Nuke01"/>.
         /// </summary>
         ElevatorNuke,
 

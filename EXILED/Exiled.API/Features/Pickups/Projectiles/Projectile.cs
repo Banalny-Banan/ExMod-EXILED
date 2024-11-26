@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------
-// <copyright file="Projectile.cs" company="Exiled Team">
-// Copyright (c) Exiled Team. All rights reserved.
+// <copyright file="Projectile.cs" company="ExMod Team">
+// Copyright (c) ExMod Team. All rights reserved.
 // Licensed under the CC BY-SA 3.0 license.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -113,19 +113,6 @@ namespace Exiled.API.Features.Pickups.Projectiles
         /// <returns>The created <see cref="Projectile"/>.</returns>
         public static Projectile Create<T>(ProjectileType projectiletype)
             where T : Projectile => Create(projectiletype) as T;
-
-        /// <summary>
-        /// Spawns a <see cref="Projectile"/>.
-        /// </summary>
-        /// <param name="pickup">The <see cref="Projectile"/> too spawn.</param>
-        /// <param name="position">The position to spawn the <see cref="Projectile"/> at.</param>
-        /// <param name="rotation">The rotation to spawn the <see cref="Projectile"/>.</param>
-        /// <param name="shouldBeActive">Whether the <see cref="Projectile"/> should be in active state after spawn.</param>
-        /// <param name="previousOwner">An optional previous owner of the item.</param>
-        /// <returns>The <see cref="Projectile"/> Spawn.</returns>
-        [Obsolete("Use pickup.Spawn(Vector3, Quaternion, Player) instead of this", true)]
-        public static Projectile Spawn(Projectile pickup, Vector3 position, Quaternion rotation, bool shouldBeActive = true, Player previousOwner = null)
-            => pickup.Spawn(position, rotation, shouldBeActive, previousOwner);
 
         /// <summary>
         /// Creates and spawns a <see cref="Projectile"/>.

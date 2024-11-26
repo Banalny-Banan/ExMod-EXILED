@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------
-// <copyright file="Room.cs" company="Exiled Team">
-// Copyright (c) Exiled Team. All rights reserved.
+// <copyright file="Room.cs" company="ExMod Team">
+// Copyright (c) ExMod Team. All rights reserved.
 // Licensed under the CC BY-SA 3.0 license.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -156,7 +156,7 @@ namespace Exiled.API.Features
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether or not the lights in this room are currently off.
+        /// Gets or sets a value indicating whether the lights in this room are currently off.
         /// </summary>
         public bool AreLightsOff
         {
@@ -493,12 +493,12 @@ namespace Exiled.API.Features
             RoomIdentifierToRoom.Add(Identifier, this);
 
             Zone = FindZone(gameObject);
-#if Debug
+#if DEBUG
             if (Type is RoomType.Unknown)
                 Log.Error($"[ZONETYPE UNKNOWN] {this}");
 #endif
             Type = FindType(gameObject);
-#if Debug
+#if DEBUG
             if (Type is RoomType.Unknown)
                 Log.Error($"[ROOMTYPE UNKNOWN] {this}");
 #endif

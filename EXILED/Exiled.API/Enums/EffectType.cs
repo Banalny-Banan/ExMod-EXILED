@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------
-// <copyright file="EffectType.cs" company="Exiled Team">
-// Copyright (c) Exiled Team. All rights reserved.
+// <copyright file="EffectType.cs" company="ExMod Team">
+// Copyright (c) ExMod Team. All rights reserved.
 // Licensed under the CC BY-SA 3.0 license.
 // </copyright>
 // -----------------------------------------------------------------------
@@ -25,7 +25,7 @@ namespace Exiled.API.Enums
         /// <summary>
         /// This enum member is used when there is no effect, similar to <see langword="null"/>.
         /// </summary>
-        None = -1, // TODO: remove = -1
+        None,
 
         /// <summary>
         /// Prevents the player from opening their inventory, reloading weapons, and using certain items.
@@ -253,5 +253,25 @@ namespace Exiled.API.Enums
         /// Can make the player move backwards if the intensity is over 100.
         /// </summary>
         Slowness,
+
+        /// <summary>
+        /// <see cref="CustomPlayerEffects.Scp1344"/>.
+        /// </summary>
+        Scp1344,
+
+        /// <summary>
+        /// <see cref="CustomPlayerEffects.SeveredEyes"/>.
+        /// </summary>
+        SeveredEyes,
+
+        /// <summary>
+        /// <see cref="CustomPlayerEffects.PitDeath"/>.
+        /// </summary>
+        PitDeath,
+
+        /// <summary>
+        /// <see cref="CustomPlayerEffects.Blurred"/>.
+        /// </summary>
+        Blurred,
     }
 }
