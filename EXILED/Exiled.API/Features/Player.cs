@@ -5,6 +5,9 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using Core.API.Features.CustomRoles;
+using JetBrains.Annotations;
+
 namespace Exiled.API.Features
 {
     using System;
@@ -588,6 +591,12 @@ namespace Exiled.API.Features
                 role = value;
             }
         }
+        
+        /// <summary>
+        /// Player's custom role object. Can be null
+        /// </summary>
+        [CanBeNull]
+        public CustomRole CustomRole { get; set; }
 
         /// <summary>
         /// Gets the role that player had before changing role.
