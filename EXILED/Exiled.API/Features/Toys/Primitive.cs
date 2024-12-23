@@ -28,7 +28,7 @@ namespace Exiled.API.Features.Toys
         /// Initializes a new instance of the <see cref="Primitive"/> class.
         /// </summary>
         /// <param name="toyAdminToyBase">The <see cref="PrimitiveObjectToy"/> of the toy.</param>
-        internal Primitive(PrimitiveObjectToy toyAdminToyBase)
+        public Primitive(PrimitiveObjectToy toyAdminToyBase)
             : base(toyAdminToyBase, AdminToyType.PrimitiveObject) => Base = toyAdminToyBase;
 
         /// <summary>

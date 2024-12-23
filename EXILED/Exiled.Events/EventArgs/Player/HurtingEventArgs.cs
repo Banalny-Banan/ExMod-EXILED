@@ -37,6 +37,20 @@ namespace Exiled.Events.EventArgs.Player
             Player = target;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HurtingEventArgs" /> class with more customization.
+        /// </summary>
+        /// <param name="attacker">The player who caused the damage.</param>
+        /// <param name="target">The player who is being damaged.</param>
+        /// <param name="damageHandler">The handler that processes the damage.</param>
+        public HurtingEventArgs(Player attacker, Player target, DamageHandlerBase damageHandler)
+        {
+            DamageHandler = new CustomDamageHandler(target, damageHandler);
+
+            Attacker = attacker;
+            Player = target;
+        }
+
         /// <inheritdoc/>
         public Player Player { get; }
 

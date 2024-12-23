@@ -350,7 +350,13 @@ namespace Exiled.API.Features.Pickups
         /// </summary>
         /// <param name="serial">The serial to look for.</param>
         /// <returns>The <see cref="Pickup"/> given the specified serial.</returns>
-        public static Pickup Get(ushort serial) => List.SingleOrDefault(x => x.Serial == serial);
+        public static Pickup Get(ushort serial)
+        {
+            if (serial == 0)
+                return null;
+
+            return List.SingleOrDefault(x => x.Serial == serial);
+        }
 
         /// <summary>
         /// Gets the <see cref="Pickup"/> given a <see cref="UnityEngine.GameObject"/>.

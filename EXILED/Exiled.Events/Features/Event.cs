@@ -190,12 +190,36 @@ namespace Exiled.Events.Features
             {
                 try
                 {
-                    Timing.RunCoroutine(handler());
+                    Timing.RunCoroutine(SafeCoroutineEnumerator(handler(), handler));
                 }
                 catch (Exception ex)
                 {
                     Log.Error($"Method \"{handler.Method.Name}\" of the class \"{handler.Method.ReflectedType.FullName}\" caused an exception when handling the event \"{GetType().FullName}\"\n{ex}");
                 }
+            }
+        }
+
+        /// <summary>
+        ///     Runs the coroutine manualy so exceptions can be caught and logged.
+        /// </summary>
+        private IEnumerator<float> SafeCoroutineEnumerator(IEnumerator<float> coroutine, CustomAsyncEventHandler handler)
+        {
+            while (true)
+            {
+                float current;
+                try
+                {
+                    if (!coroutine.MoveNext())
+                        break;
+                    current = coroutine.Current;
+                }
+                catch (Exception ex)
+                {
+                    Log.Error($"Method \"{handler.Method.Name}\" of the class \"{handler.Method.ReflectedType.FullName}\" caused an exception when handling the event \"{GetType().FullName}\"\n{ex}");
+                    yield break;
+                }
+
+                yield return current;
             }
         }
     }

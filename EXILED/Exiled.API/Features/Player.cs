@@ -5,6 +5,11 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+#pragma warning disable SA1200
+using Core.API.Features.CustomRoles;
+using JetBrains.Annotations;
+#pragma warning restore SA1200
+
 namespace Exiled.API.Features
 {
     using System;
@@ -583,6 +588,12 @@ namespace Exiled.API.Features
                 role = value;
             }
         }
+
+        /// <summary>
+        /// Gets or sets player's custom role. Can be null.
+        /// </summary>
+        [CanBeNull]
+        public CustomRole CustomRole { get; set; }
 
         /// <summary>
         /// Gets the role that player had before changing role.

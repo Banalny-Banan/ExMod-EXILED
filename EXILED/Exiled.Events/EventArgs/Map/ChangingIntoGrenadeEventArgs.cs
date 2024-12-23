@@ -10,7 +10,7 @@ namespace Exiled.Events.EventArgs.Map
     using Exiled.API.Features;
     using Exiled.API.Features.Pickups;
     using Exiled.Events.EventArgs.Interfaces;
-
+    using Footprinting;
     using InventorySystem.Items.ThrowableProjectiles;
 
     /// <summary>
@@ -27,6 +27,7 @@ namespace Exiled.Events.EventArgs.Map
             if (pickup is null)
                 Log.Error($"{nameof(ChangingIntoGrenadeEventArgs)}: Pickup is null!");
 
+            AttackerFootprint = pickup?._attacker;
             Pickup = Pickup.Get(pickup);
             Type = Pickup.Type;
         }
@@ -35,6 +36,11 @@ namespace Exiled.Events.EventArgs.Map
         /// Gets a value indicating the pickup being changed into a grenade.
         /// </summary>
         public Pickup Pickup { get; }
+
+        /// <summary>
+        /// Gets the footprint of the person responsible for activating the grenade. Can be null.
+        /// </summary>
+        public Footprint? AttackerFootprint { get; }
 
         /// <summary>
         /// Gets or sets a value indicating what type of grenade will be spawned.
