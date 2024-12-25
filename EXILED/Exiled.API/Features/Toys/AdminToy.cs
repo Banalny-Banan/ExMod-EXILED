@@ -182,7 +182,7 @@ namespace Exiled.API.Features.Toys
         /// <summary>
         /// Destroys the toy.
         /// </summary>
-        public void Destroy()
+        public virtual void Destroy()
         {
             BaseToAdminToy.Remove(AdminToyBase);
             NetworkServer.Destroy(AdminToyBase.gameObject);
