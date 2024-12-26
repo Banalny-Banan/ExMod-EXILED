@@ -3725,7 +3725,7 @@ namespace Exiled.API.Features
         /// <inheritdoc />
         public override int GetHashCode()
         {
-            return ReferenceHub.GetHashCode();
+            return base.GetHashCode();
         }
 
         /// <summary>
