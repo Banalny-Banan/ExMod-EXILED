@@ -232,10 +232,10 @@ namespace Exiled.API.Features.Items
                 PrimaryMagazine primaryContainer = PrimaryMagazine;
 
                 // Barrels that may contain some ammo in them
-                var automaticActionBarrel = BarrelMagazine as AutomaticBarrelMagazine;
+                AutomaticBarrelMagazine automaticActionBarrel = BarrelMagazine as AutomaticBarrelMagazine;
 
                 // Other type of barrels that also contain ammo but don't have AmmoStored setter
-                var pumpActionBarrel = BarrelMagazine as PumpBarrelMagazine;
+                PumpBarrelMagazine pumpActionBarrel = BarrelMagazine as PumpBarrelMagazine;
 
                 value = Mathf.Clamp(value, 0, Base is ParticleDisruptor ? 254 : byte.MaxValue);
 
@@ -261,12 +261,12 @@ namespace Exiled.API.Features.Items
                 // Distribute the ammo between containers
                 if (primaryContainer is not null)
                 {
-                    var addedAmmo = Mathf.Clamp(byte.MaxValue - primaryContainer.Ammo, 0, value);
+                    int addedAmmo = Mathf.Clamp(byte.MaxValue - primaryContainer.Ammo, 0, value);
                     primaryContainer.Ammo = addedAmmo;
                 }
                 else if (pumpActionBarrel is not null)
                 {
-                    var addedAmmo = Mathf.Clamp(byte.MaxValue - pumpActionBarrel.Ammo, 0, value);
+                    int addedAmmo = Mathf.Clamp(byte.MaxValue - pumpActionBarrel.Ammo, 0, value);
                     pumpActionBarrel.Ammo = addedAmmo;
                 }
 
