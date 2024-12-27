@@ -23,7 +23,7 @@ namespace Exiled.Events.Patches.Events.Scp2536
     /// Patches <see cref="Scp2536GiftController.ServerInteract"/>
     /// to add <see cref="Handlers.Scp2536.GrantingGift"/> event.
     /// </summary>
-    [EventPatch(typeof(Handlers.Scp2536), nameof(Handlers.Scp2536))]
+    [EventPatch(typeof(Handlers.Scp2536), nameof(Handlers.Scp2536.OpeningGift))]
     [HarmonyPatch(typeof(Scp2536GiftController), nameof(Scp2536GiftController.ServerInteract))]
     internal class OpeningGift
     {
