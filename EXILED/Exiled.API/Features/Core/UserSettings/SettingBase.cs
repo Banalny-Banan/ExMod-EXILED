@@ -232,7 +232,9 @@ namespace Exiled.API.Features.Core.UserSettings
             // Group settings by headers
             foreach (IGrouping<HeaderSetting, SettingBase> grouping in grouped)
             {
-                result.Add(grouping.Key);
+                if (grouping.Key != null)
+                    result.Add(grouping.Key);
+
                 result.AddRange(grouping);
             }
 
