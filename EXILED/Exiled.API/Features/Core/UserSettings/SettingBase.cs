@@ -238,7 +238,7 @@ namespace Exiled.API.Features.Core.UserSettings
                 result.AddRange(grouping);
             }
 
-            ServerSpecificSettingsSync.DefinedSettings = result.Select(s => s.Base).ToArray();
+            ServerSpecificSettingsSync.DefinedSettings = ServerSpecificSettingsSync.DefinedSettings.Concat(result.Select(s => s.Base)).ToArray();
             Settings.AddRange(result);
 
             if (predicate == null)
