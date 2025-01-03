@@ -232,11 +232,13 @@ namespace Exiled.API.Features.Core.UserSettings
             // Group settings by headers
             foreach (IGrouping<HeaderSetting, SettingBase> grouping in grouped)
             {
-                result.Add(grouping.Key);
+                if (grouping.Key != null)
+                    result.Add(grouping.Key);
+
                 result.AddRange(grouping);
             }
 
-            ServerSpecificSettingsSync.DefinedSettings = result.Select(s => s.Base).ToArray();
+            ServerSpecificSettingsSync.DefinedSettings = ServerSpecificSettingsSync.DefinedSettings.Concat(result.Select(s => s.Base)).ToArray();
             Settings.AddRange(result);
 
             if (predicate == null)
