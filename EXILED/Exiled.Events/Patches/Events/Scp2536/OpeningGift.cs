@@ -21,7 +21,7 @@ namespace Exiled.Events.Patches.Events.Scp2536
 
     /// <summary>
     /// Patches <see cref="Scp2536GiftController.ServerInteract"/>
-    /// to add <see cref="Handlers.Scp2536.GrantingGift"/> event.
+    /// to add <see cref="Handlers.Scp2536.OpeningGift"/> event.
     /// </summary>
     [EventPatch(typeof(Handlers.Scp2536), nameof(Handlers.Scp2536.OpeningGift))]
     [HarmonyPatch(typeof(Scp2536GiftController), nameof(Scp2536GiftController.ServerInteract))]
@@ -49,8 +49,8 @@ namespace Exiled.Events.Patches.Events.Scp2536
                     new(OpCodes.Newobj, GetDeclaredConstructors(typeof(OpeningGiftEventArgs))[0]),
                     new(OpCodes.Dup),
 
-                    // Handlers.Scp2536.OnGrantingGift(ev);
-                    new(OpCodes.Call, Method(typeof(Handlers.Scp2536), nameof(Handlers.Scp2536.OnGrantingGift))),
+                    // Handlers.Scp2536.OnOppeningGift(ev);
+                    new(OpCodes.Call, Method(typeof(Handlers.Scp2536), nameof(Handlers.Scp2536.OnOppeningGift))),
 
                     // if (!ev.IsAllowed)
                     //   goto retLabel;
