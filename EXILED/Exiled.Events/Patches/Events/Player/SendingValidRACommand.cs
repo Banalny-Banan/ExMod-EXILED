@@ -48,7 +48,7 @@ namespace Exiled.Events.Patches.Events.Player
             Label contlabel = generator.DefineLabel();
             newInstructions[index].WithLabels(contlabel);
 
-            int sendreplyidx = newInstructions.FindIndex(instructions => instructions.Calls(Method(typeof(string), nameof(string.IsNullOrEmpty)))) + offset;
+            int sendreplyidx = newInstructions.FindIndex(instructions => instructions.Calls(Method(typeof(string), nameof(string.IsNullOrEmpty)))) - 1;
 
             Label sendreply = generator.DefineLabel();
             newInstructions[sendreplyidx].WithLabels(sendreply);
@@ -88,23 +88,12 @@ namespace Exiled.Events.Patches.Events.Player
                    new (OpCodes.Callvirt, PropertyGetter(typeof(SendingValidCommandEventArgs), nameof(SendingValidCommandEventArgs.IsAllowed))),
                    new (OpCodes.Brtrue_S, contlabel),
 
-                   // if ev.Response.IsNullOrEmpty rets
-                   new (OpCodes.Ldloc_S, ev.LocalIndex),
-                   new (OpCodes.Callvirt, PropertyGetter(typeof (SendingValidCommandEventArgs), nameof(SendingValidCommandEventArgs.Response))),
-                   new (OpCodes.Call, Method(typeof(string), nameof(string.IsNullOrEmpty))),
-                   new (OpCodes.Brtrue_S, setptroperresp),
-
                    // response = ev.Response
                    new (OpCodes.Ldloc_S, ev.LocalIndex),
                    new (OpCodes.Callvirt, PropertyGetter(typeof (SendingValidCommandEventArgs), nameof(SendingValidCommandEventArgs.Response))),
                    new (OpCodes.Stloc_S, 6),
 
                    // goto sendreply
-                   new (OpCodes.Br, sendreply),
-
-                   // response = "The Command Execution Was Prevented By Plugin."
-                   new CodeInstruction(OpCodes.Ldstr, "The Command Execution Was Prevented By Plugin.").WithLabels(setptroperresp),
-                   new (OpCodes.Stloc_S, 6),
                    new (OpCodes.Br, sendreply),
                 });
             offset = -4;
