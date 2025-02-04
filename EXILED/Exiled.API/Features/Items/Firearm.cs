@@ -142,7 +142,7 @@ namespace Exiled.API.Features.Items
         public BarrelMagazine BarrelMagazine { get; }
 
         /// <summary>
-        /// Gets a primaty magazine for current firearm.
+        /// Gets the primary hitreg module for the current firearm.
         /// </summary>
         public HitscanHitregModuleBase HitscanHitregModule { get; }
 

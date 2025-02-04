@@ -133,7 +133,7 @@ namespace Exiled.API.Features.Pickups
         /// Returns the FirearmPickup in a human readable format.
         /// </summary>
         /// <returns>A string containing FirearmPickup related data.</returns>
-        public override string ToString() => $"{Type} ({Serial}) [{Weight}] *{Scale}* |{IsDistributed}| -{/*Ammo*/0}-";
+        public override string ToString() => $"{Type} ({Serial}) [{Weight}] *{Scale}* |{IsDistributed}| /{Ammo}/";
 
         /// <inheritdoc/>
         internal override void ReadItemInfo(Items.Item item)

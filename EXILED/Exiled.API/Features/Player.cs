@@ -3762,6 +3762,13 @@ namespace Exiled.API.Features
         /// <param name="player2">The second player instance.</param>
         /// <returns><see langword="true"/> if the values are not equal.</returns>
         public static bool operator !=(Player player1, Player player2) => !(player1 == player2);
+
+        /// <summary>
+        /// Unity lifetime check.
+        /// </summary>
+        /// <param name="player">The player to check.</param>
+        /// <returns><see langword="true" /> if the player is connected.</returns>
+        public static implicit operator bool(Player player) => player is not null && player.GameObject;
 #pragma warning restore SA1201
 
         /// <summary>
