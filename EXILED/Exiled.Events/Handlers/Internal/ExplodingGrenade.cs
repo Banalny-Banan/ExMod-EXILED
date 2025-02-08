@@ -18,7 +18,7 @@ namespace Exiled.Events.Handlers.Internal
         /// <inheritdoc cref="Map.OnChangedIntoGrenade(ChangedIntoGrenadeEventArgs)" />
         public static void OnChangedIntoGrenade(ChangedIntoGrenadeEventArgs ev)
         {
-            ev.Pickup.WriteProjectileInfo(ev.Projectile);
+            ev.GrenadePickup.WriteProjectileInfo(ev.Projectile);
         }
     }
 }
