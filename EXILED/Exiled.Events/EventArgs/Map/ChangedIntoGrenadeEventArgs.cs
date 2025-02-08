@@ -9,13 +9,13 @@ namespace Exiled.Events.EventArgs.Map
 {
     using Exiled.API.Features.Pickups;
     using Exiled.API.Features.Pickups.Projectiles;
-    using Exiled.Events.EventArgs.Interfaces;
+    using Interfaces;
     using InventorySystem.Items.ThrowableProjectiles;
 
     /// <summary>
     /// Contains all information for when the server is turned a pickup into a live grenade.
     /// </summary>
-    public class ChangedIntoGrenadeEventArgs : IExiledEvent
+    public class ChangedIntoGrenadeEventArgs : IExiledEvent, IPickupEvent
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ChangedIntoGrenadeEventArgs"/> class.
@@ -24,14 +24,17 @@ namespace Exiled.Events.EventArgs.Map
         /// <param name="projectile">The <see cref="TimeGrenadeProjectile"/>.</param>
         public ChangedIntoGrenadeEventArgs(TimedGrenadePickup pickup, ThrownProjectile projectile)
         {
-            Pickup = API.Features.Pickups.Pickup.Get<GrenadePickup>(pickup);
-            Projectile = API.Features.Pickups.Pickup.Get<Projectile>(projectile);
+            GrenadePickup = Pickup.Get<GrenadePickup>(pickup);
+            Projectile = Pickup.Get<Projectile>(projectile);
         }
 
         /// <summary>
         /// Gets a value indicating the pickup that changed into a grenade.
         /// </summary>
-        public GrenadePickup Pickup { get; }
+        public GrenadePickup GrenadePickup { get; }
+
+        /// <inheritdoc cref="GrenadePickup"/>
+        public Pickup Pickup => GrenadePickup;
 
         /// <summary>
         /// Gets a value indicating the projectile that spawned.

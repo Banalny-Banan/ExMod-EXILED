@@ -25,7 +25,7 @@ namespace Exiled.Events.EventArgs.Map
     /// <summary>
     /// Contains all information before a grenade explodes.
     /// </summary>
-    public class ExplodingGrenadeEventArgs : IPlayerEvent, IDeniableEvent
+    public class ExplodingGrenadeEventArgs : IPlayerEvent, IDeniableEvent, IPickupEvent
     {
         private ExplosionType explosionType;
 
@@ -138,6 +138,9 @@ namespace Exiled.Events.EventArgs.Map
         /// Gets the grenade that is exploding.
         /// </summary>
         public EffectGrenadeProjectile Projectile { get; }
+
+        /// <inheritdoc cref="Projectile"/>
+        public Pickup Pickup => Projectile;
 
         /// <summary>
         /// Gets or sets a value indicating whether the grenade can be thrown.
